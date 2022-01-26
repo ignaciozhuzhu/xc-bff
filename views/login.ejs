@@ -1,0 +1,28 @@
+<%- include header %>
+<div class="container">
+    <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="username">用户名</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用户名" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="password">密码</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码" required>
+                </div>
+            </div>
+            <div style="margin-bottom: 12px;color: red"> <%=error%> </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-primary" style="width: 110px;margin-bottom: 15px;" name="buttonType" value="normalView" >登录</button>
+                    <span>      </span>
+                    <button type="submit" class="btn btn-primary" style="width: 110px;margin-bottom: 15px;" name="buttonType" value="manageView" >登录管理界面</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<%- include footer %>

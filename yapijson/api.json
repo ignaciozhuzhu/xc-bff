@@ -1,0 +1,75 @@
+[
+  {
+    "index": 0,
+    "name": "公共分类",
+    "desc": "公共分类",
+    "add_time": 1642934437,
+    "up_time": 1642934437,
+    "list": [
+      {
+        "query_path": {
+          "path": "/stockList",
+          "params": []
+        },
+        "edit_uid": 0,
+        "status": "undone",
+        "type": "static",
+        "req_body_is_json_schema": false,
+        "res_body_is_json_schema": true,
+        "api_opened": false,
+        "index": 0,
+        "tag": [],
+        "_id": 1788228,
+        "method": "GET",
+        "catid": 386667,
+        "title": "商品库存个数",
+        "path": "/stockList",
+        "project_id": 129669,
+        "req_params": [],
+        "res_body_type": "json",
+        "desc": "",
+        "req_query": [],
+        "req_headers": [],
+        "req_body_form": [],
+        "markdown": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"stockList\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@integer(1,5)\"}},\"quantity\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@integer(1,20)\"}}},\"required\":[\"id\",\"quantity\"]}}},\"required\":[\"stockList\"]},\"code\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@integer(0,500)\"}},\"message\":{\"type\":\"string\",\"mock\":{\"mock\":\"@pick([\\\"成功\\\", \\\"失败\\\", \\\"未知\\\"])\"}}},\"required\":[\"data\",\"code\",\"message\"]}",
+        "uid": 176798,
+        "add_time": 1642936802,
+        "up_time": 1643108773,
+        "__v": 0
+      },
+      {
+        "query_path": {
+          "path": "/orderList",
+          "params": []
+        },
+        "edit_uid": 0,
+        "status": "undone",
+        "type": "static",
+        "req_body_is_json_schema": false,
+        "res_body_is_json_schema": true,
+        "api_opened": false,
+        "index": 0,
+        "tag": [],
+        "_id": 1788187,
+        "method": "GET",
+        "catid": 386667,
+        "title": "订单列表查询",
+        "path": "/orderList",
+        "project_id": 129669,
+        "req_params": [],
+        "res_body_type": "json",
+        "desc": "",
+        "uid": 176798,
+        "add_time": 1642934443,
+        "up_time": 1643108762,
+        "req_query": [],
+        "req_headers": [],
+        "req_body_form": [],
+        "__v": 0,
+        "markdown": "",
+        "res_body": "{\"type\":\"object\",\"title\":\"empty object\",\"properties\":{\"data\":{\"type\":\"object\",\"properties\":{\"productList\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@integer(1,5)\"}},\"name\":{\"type\":\"string\"},\"quantity\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@integer(1,20)\"}}},\"required\":[\"id\",\"name\",\"quantity\"]}},\"city\":{\"type\":\"string\",\"mock\":{\"mock\":\"@city()\"}}},\"required\":[\"productList\",\"city\"]},\"code\":{\"type\":\"integer\",\"mock\":{\"mock\":\"@integer(0,500)\"}},\"message\":{\"type\":\"string\",\"mock\":{\"mock\":\"@pick([\\\"成功\\\", \\\"失败\\\", \\\"未知\\\"])\"}}},\"required\":[\"data\",\"code\",\"message\"]}"
+      }
+    ]
+  }
+]

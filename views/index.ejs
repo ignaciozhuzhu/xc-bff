@@ -1,0 +1,11 @@
+<%- include header %>
+<% if(locals.islogin){ %>
+用户：<h2><%= test %></h2>已经登陆
+<br />
+<br />
+<a class="btn" href=<%= server %>>去使用</a>
+<% }else{ %>
+<p><a href="/login">登录</a></p>
+<a class="btn" href=<%= server %>>游客状态去使用</a>
+<% } %>
+<%- include footer %>

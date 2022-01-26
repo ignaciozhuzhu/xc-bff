@@ -1,0 +1,90 @@
+<%- include header %>
+<div class="container">
+    <div style="min-height:44px">
+        <input type="text" class="form-control" style="display:-webkit-inline-box;float:left;width:auto;" id="keyword" name="keyword" autocomplete="on" placeholder="按用户名称查询" onchange="searchUserList()" value=<%= keyword %> >
+        <button type="submit" class="btn btn-default" style="float: left;margin-left: 14px;">搜索</button>
+        <select class="form-control" style="float:left;width:auto;display:-webkit-inline-box;margin-left:14px" id="groupid" name="groupid" placeholder="按组查询" onchange="searchUserList()" >
+                <option value="">全部组</option>
+            <% groups.forEach(function(group){%>
+                <option value=<%= group.groupid %> <%= groupid && Number(groupid) === Number(group.groupid) ? "selected" : "" %> > <%= group.groupname%> </option>
+            <% }) %>
+        </select>
+        <a href="/users/admin/createuser" style="display:-webkit-box;float:right;line-height:44px;margin-right:5px">创建用户</a>
+    </div>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th style="text-align: center">用户 ID</th>
+            <th style="text-align: center">用户名称</th>
+            <th style="text-align: center">所属组名</th>
+            <th style="text-align: center">岗位名称</th>
+            <th style="text-align: center">用户状态</th>
+            <th style="text-align: center">操作</th>
+        </tr>
+        <tbody>
+            <% users.forEach(function(user){%>
+                <tr>
+                    <td><%= user.userid %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.groupname %></td>
+                    <td><%= user.usertitle %></td>
+                    <td><%= user.status %></td>
+                    <% if (user.status === "正常") { %>
+                        <td><a href=<%= "/users/admin/edituser"+"?userid="+user.userid %>>编辑</a> <span style="color: #ccc;">|</span> <a href=<%= "/users/admin/deleteuser"+"?userid="+user.userid %> onclick="javascript:return del()" >删除</a></td>
+                    <% } else { %>
+                        <td><a href=<%= "/users/admin/normalize"+"?userid="+user.userid %> onclick="javascript:return normal()" >恢复</a></td>
+                    <% } %>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <span style="margin-left: 10px">
+            总共记录 ：<%= total %> 条  共 <%= pageCount %> 页  第 <%= page %> 页
+            <a href=<%= "/users/admin"+"?page="+1+"&keyword="+(keyword || '')+"&groupid="+(groupid || '')  %> style="text-decoration: none">[首页]</a>
+            <% if ( page - 1 > 0 ) { %>
+                <a href=<%= "/users/admin"+"?page="+(page-1)+"&keyword="+(keyword || '')+"&groupid="+(groupid || '')  %> style="text-decoration: none">[上一页]</a>
+            <% } %>
+            <% if ( page + 1 <= pageCount ) { %>
+                <a href=<%= "/users/admin"+"?page="+(page+1)+"&keyword="+(keyword || '')+"&groupid="+(groupid || '') %> style="text-decoration: none">[下一页]</a>
+            <% } %>
+            <a href=<%= "/users/admin"+"?page="+(pageCount)+"&keyword="+(keyword || '')+"&groupid="+(groupid || '') %> style="text-decoration: none">[尾页]</a>
+    </span>
+</div>
+<%- include footer %>
+<script type="text/javascript">
+    function searchUserList(){
+        let keyword = document.getElementById("keyword");
+        if (!keyword) {
+            keyword = document.getElementsByName("keyword");
+            if (!keyword) {
+               console.error('使用未知浏览器，系统不兼容，请尽快联系管理员');
+            }
+        }
+
+        let select = document.getElementById("groupid");
+        if (!select) {
+            select = document.getElementsByName("groupid");
+            if (!select) {
+               console.error('使用未知浏览器，系统不兼容，请尽快联系管理员');
+            }
+        }
+        const a = document.createElement('a');
+        a.href = '/users/admin' + '?keyword=' + keyword.value + '&groupid=' + select.value;
+        a.click();
+    }
+    function del() {
+        const msg = "您真的确定要删除吗？\n\n请确认！"; 
+        if (confirm(msg)===true){ 
+            return true; 
+        }else{ 
+            return false; 
+        }
+    }
+    function normal() {
+        const msg = "您真的确定要恢复吗？\n\n请确认！"; 
+        if (confirm(msg)===true){ 
+            return true; 
+        }else{ 
+            return false; 
+        }
+    }
+</script>

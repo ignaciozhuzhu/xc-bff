@@ -1,0 +1,33 @@
+<%- include header %>
+<div class="container">
+    <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="username">新密码</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="username" name="newpwd" placeholder="新密码" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="password">再次密码</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="password" name="apwd" placeholder="再次密码" required>
+                </div>
+            </div>
+            <% if(changed==true){ %>
+                密码修改成功！<a href="/" class="btn">去报价</a><span>  </span>
+                <% if (authUserManage) { %>
+                    <a href="/users/admin" class="btn">去用户管理界面</a>
+                <% } %>
+            <% } %>
+            <div style="margin-bottom: 12px;color: red"> <%=error%> </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <button type="submit" class="btn btn-primary">修改密码</button>
+                </div>
+            </div>
+            <p>*初始密码必须修改</p>
+        </fieldset>
+    </form>
+</div>
+<%- include footer %>
